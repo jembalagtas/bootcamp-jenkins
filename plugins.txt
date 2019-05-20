@@ -1,7 +1,7 @@
 ace-editor:latest
 analysis-collector:latest
 analysis-core:latest
-ansicolor:0.latest
+ansicolor:latest
 ant:latest
 antisamy-markup-formatter:latest
 apache-httpcomponents-client-4-api:latest
