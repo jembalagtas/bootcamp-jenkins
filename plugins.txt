@@ -39,7 +39,7 @@ codescanner:latest
 command-launcher:latest
 conditional-buildstep:latest
 config-file-provider:latest
-copy-to-slave:latest
+copy-to-slave:1.4.4
 copyartifact:latest
 credentials-binding:latest
 credentials:latest
