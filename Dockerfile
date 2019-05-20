@@ -32,6 +32,7 @@ VOLUME $JENKINS_HOME
 # to set on a fresh new installation. Use it to bundle additional plugins
 # or config file with your custom jenkins Docker image.
 RUN mkdir -p /usr/share/jenkins/ref/init.groovy.d
+COPY security.groovy /usr/share/jenkins/ref/init.groovy.d/security.groovy
 
 # Use tini as subreaper in Docker container to adopt zombie processes
 ARG TINI_VERSION=v0.16.1
