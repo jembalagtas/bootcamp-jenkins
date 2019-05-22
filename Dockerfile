@@ -93,12 +93,11 @@ RUN chown -R jenkins:jenkins /opt/maven
 RUN wget --no-verbose -O /tmp/sonar-scanner-cli-3.3.0.1492-linux.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
 
 # Install Sonar Scanner
-RUN mkdir ${JENKINS_HOME}/sonar-scanner
-RUN unzip /tmp/sonar-scanner-cli-3.3.0.1492-linux.zip -d ${JENKINS_HOME}/sonar-scanner/
-RUN ln -s ${JENKINS_HOME}/sonar-scanner/sonar-scanner-3.3.0.1492-linux ${JENKINS_HOME}/sonar-scanner/sonar-scanner
-RUN ln -s ${JENKINS_HOME}/sonar-scanner/sonar-scanner/bin/sonar-scanner /usr/local/bin
+RUN unzip /tmp/sonar-scanner-cli-3.3.0.1492-linux.zip -d /opt/
+RUN ln -s /opt/sonar-scanner-3.3.0.1492-linux /opt/sonar-scanner
+RUN ln -s /opt/sonar-scanner/bin/sonar-scanner /usr/local/bin
 RUN rm -f /tmp/sonar-scanner-cli-3.3.0.1492-linux.zip
-RUN chown -R jenkins:jenkins ${JENKINS_HOME}/sonar-scanner/sonar-scanner
+RUN chown -R jenkins:jenkins /opt/sonar-scanner
 
 # Remove download archive files
 RUN apt-get clean
