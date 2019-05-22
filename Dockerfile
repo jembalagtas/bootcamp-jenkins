@@ -75,6 +75,25 @@ EXPOSE ${agent_port}
 
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 
+
+USER root
+
+RUN apt-get install -y wget
+
+# Download Maven 3.6.1
+RUN wget --no-verbose -O /tmp/apache-maven-3.6.1-bin.tar.gz http://apache.cs.utah.edu/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz
+
+# Install Maven
+RUN tar xzf /tmp/apache-maven-3.6.1-bin.tar.gz -C /opt/
+RUN ln -s /opt/pache-maven-3.6.1 /opt/maven
+RUN ln -s /opt/maven/bin/mvn /usr/local/bin
+RUN rm -f /tmp/apache-maven-3.6.1-bin.tar.gz
+ENV MAVEN_HOME /opt/maven
+RUN chown -R jenkins:jenkins /opt/maven
+
+# Remove download archive files
+RUN apt-get clean
+
 USER ${user}
 
 COPY jenkins-support /usr/local/bin/jenkins-support
