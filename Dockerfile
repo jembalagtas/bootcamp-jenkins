@@ -83,7 +83,7 @@ RUN wget --no-verbose -O /tmp/apache-maven-3.6.1-bin.tar.gz http://apache.cs.uta
 
 # Install Maven
 RUN tar xzf /tmp/apache-maven-3.6.1-bin.tar.gz -C /opt/
-RUN ln -s /opt/pache-maven-3.6.1 /opt/maven
+RUN ln -s /opt/apache-maven-3.6.1 /opt/maven
 RUN ln -s /opt/maven/bin/mvn /usr/local/bin
 RUN rm -f /tmp/apache-maven-3.6.1-bin.tar.gz
 ENV MAVEN_HOME /opt/maven
