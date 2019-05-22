@@ -75,9 +75,7 @@ EXPOSE ${agent_port}
 
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 
-
 USER root
-
 RUN apt-get install -y wget
 
 # Download Maven 3.6.1
