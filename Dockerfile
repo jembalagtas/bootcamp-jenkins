@@ -34,24 +34,6 @@ VOLUME $JENKINS_HOME
 RUN mkdir -p /usr/share/jenkins/ref/init.groovy.d
 COPY security.groovy /usr/share/jenkins/ref/init.groovy.d/security.groovy
 
-# Add pre-configure jenkins user, roles and folders
-COPY config.xml ${JENKINS_HOME}/
-COPY users/devopsadmin_5363875188139681679 ${JENKINS_HOME}/users/
-COPY users/users.xml ${JENKINS_HOME}/users/
-COPY users/usergroup1a_8797605135613461888 ${JENKINS_HOME}/users/
-COPY users/usergroup1b_995718742155678125 ${JENKINS_HOME}/users/
-COPY users/usergroup2a_6775891199370930611 ${JENKINS_HOME}/users/
-COPY users/usergroup2b_8197134849313077716 ${JENKINS_HOME}/users/
-COPY users/usergroup3a_20477496831509518 ${JENKINS_HOME}/users/
-COPY users/usergroup3b_1811229520844806677 ${JENKINS_HOME}/users/
-COPY users/usergroup4a_2579800591356723534 ${JENKINS_HOME}/users/
-COPY users/usergroup4b_7631031392398340817 ${JENKINS_HOME}/users/
-COPY users/usergroup5a_6181960236795692129 ${JENKINS_HOME}/users/
-COPY users/usergroup5b_4437288476909917641 ${JENKINS_HOME}/users/
-COPY users/usergroup6a_3214710707687548879 ${JENKINS_HOME}/users/
-COPY users/usergroup6b_6182137220852700818 ${JENKINS_HOME}/users/
-COPY jobs ${JENKINS_HOME}/
-
 # Use tini as subreaper in Docker container to adopt zombie processes
 ARG TINI_VERSION=v0.16.1
 COPY tini_pub.gpg ${JENKINS_HOME}/tini_pub.gpg
@@ -133,3 +115,21 @@ COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 
 RUN xargs /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+
+# Add pre-configure jenkins user, roles and folders
+COPY config.xml ${JENKINS_HOME}/
+COPY users/devopsadmin_5363875188139681679 ${JENKINS_HOME}/users/
+COPY users/users.xml ${JENKINS_HOME}/users/
+COPY users/usergroup1a_8797605135613461888 ${JENKINS_HOME}/users/
+COPY users/usergroup1b_995718742155678125 ${JENKINS_HOME}/users/
+COPY users/usergroup2a_6775891199370930611 ${JENKINS_HOME}/users/
+COPY users/usergroup2b_8197134849313077716 ${JENKINS_HOME}/users/
+COPY users/usergroup3a_20477496831509518 ${JENKINS_HOME}/users/
+COPY users/usergroup3b_1811229520844806677 ${JENKINS_HOME}/users/
+COPY users/usergroup4a_2579800591356723534 ${JENKINS_HOME}/users/
+COPY users/usergroup4b_7631031392398340817 ${JENKINS_HOME}/users/
+COPY users/usergroup5a_6181960236795692129 ${JENKINS_HOME}/users/
+COPY users/usergroup5b_4437288476909917641 ${JENKINS_HOME}/users/
+COPY users/usergroup6a_3214710707687548879 ${JENKINS_HOME}/users/
+COPY users/usergroup6b_6182137220852700818 ${JENKINS_HOME}/users/
+COPY jobs ${JENKINS_HOME}/
